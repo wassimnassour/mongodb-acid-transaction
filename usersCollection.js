@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb")
+const { connectToDatabase } = require("./helpers")
 
 /**
  * This script creates 3 new users in the users collection in the sample_airbnb database.
@@ -11,18 +11,7 @@ const { MongoClient } = require("mongodb")
  */
 
 async function main() {
-  /**
-   * Connection URI. Update <username>, <password>, and <your-cluster-url> to reflect your cluster.
-   * See http://bit.ly/NodeDocs_lauren for more details
-   */
-  const uri =
-    "mongodb+srv://<username>:<password>@<your-cluster-url>/sample_airbnb?retryWrites=true&w=majority"
-
-  /**
-   * The Mongo Client you will use to interact with your database
-   * See bit.ly/Node_MongoClient for more details
-   */
-  const client = new MongoClient(uri)
+  const client = connectToDatabase()
 
   try {
     // Connect to the MongoDB cluster
